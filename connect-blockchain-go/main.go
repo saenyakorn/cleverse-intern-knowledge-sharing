@@ -11,6 +11,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
+	"github.com/saenyakorn/cleverse-intern-knowledge-sharing/pkg/fibo"
 	"github.com/saenyakorn/cleverse-intern-knowledge-sharing/pkg/token"
 )
 
@@ -62,18 +63,21 @@ func main() {
 	fmt.Println("Version 2, Took", elapsed, ", Symbols:", symbols)
 
 	// Fibonacci
-	// 	result := -1
-	// 	go func() {
-	// 		result = fibo.Fibonacci(ctx, 42)
-	// 	}()
-	// 	for {
-	// 		if result == -1 {
-	// 			fmt.Println("Sleep for 1 second")
-	// 			time.Sleep(time.Second)
-	// 		} else {
-	// 			break
-	// 		}
-	// 	}
-	// 	fmt.Println("Fibonacci:", result)
-	// }
+	resultChan := make(chan int)
+	go func() {
+		resultChan <- fibo.Fibonacci(ctx, 42)
+	}()
+	for {
+		select {
+		case <-ctx.Done():
+			fmt.Println("Context Done")
+			return
+		case result := <-resultChan:
+			fmt.Println("Fibonacci:", result)
+			return
+		default:
+			fmt.Println("Sleep for 1 second")
+			time.Sleep(time.Second)
+		}
+	}
 }
