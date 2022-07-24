@@ -36,8 +36,9 @@ func main() {
 		BUSDAddr = common.HexToAddress("0xe9e7cea3dedca5984780bafc599bd69add087d56")
 	)
 
+	var amount = 2
 	var mockAddrs []common.Address
-	for i := 1; i < 16; i++ {
+	for i := 1; i < amount; i++ {
 		mockAddrs = append(mockAddrs, WBNDAddr)
 		mockAddrs = append(mockAddrs, BUSDAddr)
 	}
@@ -59,4 +60,20 @@ func main() {
 	}
 	elapsed = time.Since(start)
 	fmt.Println("Version 2, Took", elapsed, ", Symbols:", symbols)
+
+	// Fibonacci
+	// 	result := -1
+	// 	go func() {
+	// 		result = fibo.Fibonacci(ctx, 42)
+	// 	}()
+	// 	for {
+	// 		if result == -1 {
+	// 			fmt.Println("Sleep for 1 second")
+	// 			time.Sleep(time.Second)
+	// 		} else {
+	// 			break
+	// 		}
+	// 	}
+	// 	fmt.Println("Fibonacci:", result)
+	// }
 }
