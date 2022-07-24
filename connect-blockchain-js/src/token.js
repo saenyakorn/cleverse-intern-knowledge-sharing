@@ -2,7 +2,7 @@ import { ethers } from 'ethers'
 
 /**
  * @param {ethers.Contract} contract
- * @returns {string}
+ * @returns {Promise<string>}
  */
 export async function getTokenSymbol(contract) {
   const symbol = await contract.symbol()
@@ -11,7 +11,7 @@ export async function getTokenSymbol(contract) {
 
 /**
  * @param {ethers.Contract[]} contracts
- * @returns {string[]}
+ * @returns {Promise<string[]>}
  */
 export async function getTokenSymbolsV1(contracts) {
   const symbols = []
