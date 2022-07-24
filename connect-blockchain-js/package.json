@@ -8,6 +8,6 @@
     "ethers": "^5.6.9"
   },
   "scripts": {
-    "start:connect": "node --experimental-json-modules src/index.js"
+    "start": "node --experimental-json-modules src/index.js"
   }
 }
