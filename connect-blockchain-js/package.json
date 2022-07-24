@@ -1,0 +1,13 @@
+{
+  "name": "blockchain-demo",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "type": "module",
+  "license": "MIT",
+  "dependencies": {
+    "ethers": "^5.6.9"
+  },
+  "scripts": {
+    "start:connect": "node --experimental-json-modules src/index.js"
+  }
+}
